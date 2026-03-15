@@ -24,6 +24,24 @@ class MyApp extends StatelessWidget {
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
+  Widget _buildFastMenu(IconData icon, String title) {
+    return Column(
+      children: [
+        Container(
+          padding: const EdgeInsets.all(10),
+          decoration: BoxDecoration( 
+            // ignore: deprecated_member_use
+            color: Colors.white.withOpacity(0.1),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Icon(icon, color: Colors.white, size: 28),
+        ),
+        const SizedBox(height: 8),
+        Text(title, style: const TextStyle(color: Colors.white, fontSize: 12)),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,6 +51,7 @@ class HomePage extends StatelessWidget {
           children: [
             Stack(
               children: [
+                //layer pertama
                 Container(
                   height: 220,
                   padding: const EdgeInsets.only(top: 60, left: 20, right: 20),
@@ -47,6 +66,7 @@ class HomePage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                     //logo dan sapaan
                       Row(
                         children: [
                           const Column(
@@ -96,7 +116,7 @@ class HomePage extends StatelessWidget {
                           ),
                         ],
                       ),
-
+//notifikasi dan bantuan
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -168,9 +188,9 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                 ),
-
+//layer kedua
                 Container(
-                  margin: const EdgeInsets.only(top: 20, left: 20, right: 20),
+                  margin: const EdgeInsets.only(top: 120, left: 20, right: 20),
                   padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
                     color: Color(0xFF015A9E),
@@ -233,6 +253,19 @@ class HomePage extends StatelessWidget {
                           ),
                         ],
                       ),
+                      const SizedBox(height: 25),
+                      //fast menu
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          _buildFastMenu(Icons.swap_horiz,'Transfer'),
+                          _buildFastMenu(Icons.receipt_long,'BRIVA'),
+                          _buildFastMenu(Icons.account_balance_wallet_outlined,'E-Wallet'),
+                          _buildFastMenu(Icons.phone_android,'Pulsa/Data'),
+
+                        ],
+                        ),
                     ],
                   ),
                 ),
