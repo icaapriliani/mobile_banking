@@ -24,12 +24,13 @@ class MyApp extends StatelessWidget {
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
+  //fungsi untuk membuat menu cepat
   Widget _buildFastMenu(IconData icon, String title) {
     return Column(
       children: [
         Container(
           padding: const EdgeInsets.all(10),
-          decoration: BoxDecoration( 
+          decoration: BoxDecoration(
             // ignore: deprecated_member_use
             color: Colors.white.withOpacity(0.1),
             borderRadius: BorderRadius.circular(10),
@@ -38,6 +39,54 @@ class HomePage extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         Text(title, style: const TextStyle(color: Colors.white, fontSize: 12)),
+      ],
+    );
+  }
+
+  //fungsi untuk menu kotak
+  Widget _buildGridItem(
+    IconData icon,
+    Color iconColor,
+    String title, {
+    bool hasBadge = false,
+  }) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Stack(
+          children: [
+            Container(
+              width: 55,
+              height: 55,
+              decoration: BoxDecoration(
+                color: Colors.lightBlue.shade50,
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: Icon(icon, color: iconColor, size: 30),
+            ),
+            //if menu memiliki badge notifikasi
+            if (hasBadge)
+              Positioned(
+                right: -2,
+                top: -2,
+                child: Container(
+                  width: 14,
+                  height: 14,
+                  decoration: BoxDecoration(
+                    color: Colors.red,
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Colors.white, width: 2),
+                  ),
+                ),
+              ),
+          ],
+        ),
+        const SizedBox(height: 8),
+        Text(
+          title,
+          textAlign: TextAlign.center,
+          style: const TextStyle(fontSize: 12, color: Colors.black87),
+        ),
       ],
     );
   }
@@ -66,7 +115,7 @@ class HomePage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                     //logo dan sapaan
+                      //logo dan sapaan
                       Row(
                         children: [
                           const Column(
@@ -116,7 +165,7 @@ class HomePage extends StatelessWidget {
                           ),
                         ],
                       ),
-//notifikasi dan bantuan
+                      //notifikasi dan bantuan
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -188,7 +237,7 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                 ),
-//layer kedua
+                //layer kedua
                 Container(
                   margin: const EdgeInsets.only(top: 120, left: 20, right: 20),
                   padding: const EdgeInsets.all(20),
@@ -259,18 +308,87 @@ class HomePage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          _buildFastMenu(Icons.swap_horiz,'Transfer'),
-                          _buildFastMenu(Icons.receipt_long,'BRIVA'),
-                          _buildFastMenu(Icons.account_balance_wallet_outlined,'E-Wallet'),
-                          _buildFastMenu(Icons.phone_android,'Pulsa/Data'),
-
+                          _buildFastMenu(Icons.swap_horiz, 'Transfer'),
+                          _buildFastMenu(Icons.receipt_long, 'BRIVA'),
+                          _buildFastMenu(
+                            Icons.account_balance_wallet_outlined,
+                            'E-Wallet',
+                          ),
+                          _buildFastMenu(Icons.phone_android, 'Pulsa/Data'),
                         ],
-                        ),
+                      ),
                     ],
                   ),
                 ),
               ],
             ),
+            const SizedBox(height: 25),
+            //kolom pencarian
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(30),
+                border: Border.all(color: Colors.grey.shade300),
+              ),
+              child: Row(
+                children: [
+                  const Icon(Icons.search, color: Color(0xFF00529C)),
+                  const SizedBox(width: 10),
+                  Text(
+                    'Cari Fitur',
+                    style: TextStyle(color: Colors.grey.shade600, fontSize: 14),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 20),
+
+            //grid menu
+            GridView.count(
+              crossAxisCount: 4,
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              mainAxisSpacing: 15,
+              crossAxisSpacing: 10,
+              childAspectRatio: 0.8,
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              children: [
+                _buildGridItem(
+                  Icons.account_balance,
+                  Colors.green,
+                  'Top Up',
+                  hasBadge: true,
+                ),
+                _buildGridItem(Icons.receipt, Colors.blue, 'Tagihan'),
+                _buildGridItem(Icons.atm, Colors.blue, 'Setor & Tarik\nTunai'),
+                _buildGridItem(
+                  Icons.shopping_bag,
+                  Colors.pink,
+                  'Lifestyle',
+                  hasBadge: true,
+                ),
+                _buildGridItem(
+                  Icons.qr_code_scanner,
+                  Colors.blue,
+                  'QRIS\nTransfer',
+                  hasBadge: true,
+                ),
+                _buildGridItem(
+                  Icons.credit_card,
+                  Colors.blue,
+                  'Debit\nVirtual',
+                ),
+                _buildGridItem(
+                  Icons.menu_book,
+                  Colors.orange,
+                  'Catatan\nKeuangan',
+                ),
+                _buildGridItem(Icons.eco, Colors.orange, 'Investasi'),
+              ],
+            ),
+            const SizedBox(height: 40),
           ],
         ),
       ),
