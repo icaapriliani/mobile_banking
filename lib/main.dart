@@ -423,10 +423,22 @@ Widget _buildBottomNavItem(IconData icon, String label, {bool isActive = false})
 
         ],
         ),
+      
+      child: const Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(Icons.qr_code_scanner, color: Colors.white, size: 28),
+          SizedBox(height: 2),
+          Text('QRIS', style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold)),
+        ],
+      ),
       ),
       //child 2 (scaffold) : bottomNavigationBar
       bottomNavigationBar: BottomAppBar(
         color: Colors.white,
+        //memberi efek cekungan untuk tombol qris
+        shape: const CircularNotchedRectangle(),
+        notchMargin: 8.0,//jarak antara tombol qris &batas cekungan
         elevation: 10, //memberikan bayangan
         child: SizedBox(
           height: 60,
@@ -434,8 +446,12 @@ Widget _buildBottomNavItem(IconData icon, String label, {bool isActive = false})
             children: [
               _buildBottomNavItem(Icons.home, 'Home', isActive: true),
               _buildBottomNavItem(Icons.receipt_long, 'Mutasi'),
+
+              const SizedBox(width: 40), //memberi jarak untuk tombol qris
+
               _buildBottomNavItem(Icons.mail_outline, 'Aktivitas'),
               _buildBottomNavItem(Icons.person_outline, 'Akun'),
+          
             ],
             ),
         ),
