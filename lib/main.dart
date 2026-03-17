@@ -122,15 +122,25 @@ Widget _buildBottomNavItem(IconData icon, String label, {bool isActive = false})
               children: [
                 //layer pertama
                 Container(
-                  height: 220,
+                  height: 240,
+                  width: double.infinity,
                   padding: const EdgeInsets.only(top: 60, left: 20, right: 20),
                   decoration: const BoxDecoration(
-                    color: Color(0xFF00529C),
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Color(0xFF002244),
+                        Color(0xFF00529C),
+                      ],
+                    ),
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(30),
                       bottomRight: Radius.circular(30),
                     ),
                   ),
+                    
+                  
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -151,7 +161,7 @@ Widget _buildBottomNavItem(IconData icon, String label, {bool isActive = false})
                                 ),
                               ),
                               Text(
-                                'mo',
+                                ' mo',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 16,
@@ -167,7 +177,7 @@ Widget _buildBottomNavItem(IconData icon, String label, {bool isActive = false})
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Hai,',
+                                'Selamat Pagi',
                                 style: TextStyle(
                                   color: Colors.white70,
                                   fontSize: 14,
