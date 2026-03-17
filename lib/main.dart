@@ -91,10 +91,30 @@ class HomePage extends StatelessWidget {
     );
   }
 
+//item navigasi bawah
+
+Widget _buildBottomNavItem(IconData icon, String label, {bool isActive = false}) {
+  return Column(
+    mainAxisSize: MainAxisSize.min,
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Icon(icon, color: isActive ? const Color(0xFF00529C) : Colors.grey, size:24),
+      const SizedBox(height: 4),
+      Text(
+        label,
+        style: TextStyle(color: isActive ? const Color(0xFF00529C) : Colors.grey, fontSize: 10, fontWeight: isActive ? FontWeight.bold : FontWeight.normal,),
+      ),
+      
+    ],
+  );
+}
   @override
+
   Widget build(BuildContext context) {
+    //parent : scaffold
     return Scaffold(
       backgroundColor: Colors.white,
+      //child 1 (scaffold) : body
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -390,6 +410,22 @@ class HomePage extends StatelessWidget {
             ),
             const SizedBox(height: 40),
           ],
+        ),
+      ),
+      //child 2 (scaffold) : bottomNavigationBar
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.white,
+        elevation: 10, //memberikan bayangan
+        child: SizedBox(
+          height: 60,
+          child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              _buildBottomNavItem(Icons.home, 'Home', isActive: true),
+              _buildBottomNavItem(Icons.receipt_long, 'Mutasi'),
+              _buildBottomNavItem(Icons.mail_outline, 'Aktivitas'),
+              _buildBottomNavItem(Icons.person_outline, 'Akun'),
+            ],
+            ),
         ),
       ),
     );
