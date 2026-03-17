@@ -25,20 +25,21 @@ class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   //fungsi untuk membuat menu cepat
-  Widget _buildFastMenu(IconData icon, String title) {
+  Widget _buildFastMenu(IconData icon,Color iconColor, String title) {
     return Column(
       children: [
         Container(
-          padding: const EdgeInsets.all(10),
+        width: 50,
+        height: 50,
           decoration: BoxDecoration(
             // ignore: deprecated_member_use
-            color: Colors.white.withOpacity(0.1),
-            borderRadius: BorderRadius.circular(10),
+            color: iconColor.withOpacity(0.15),
+            borderRadius: BorderRadius.circular(15),
           ),
-          child: Icon(icon, color: Colors.white, size: 28),
+          child: Icon(icon, color: iconColor, size: 28),
         ),
         const SizedBox(height: 8),
-        Text(title, style: const TextStyle(color: Colors.white, fontSize: 12)),
+        Text(title, style: const TextStyle(color: Colors.black87, fontSize: 12)),
       ],
     );
   }
@@ -269,15 +270,24 @@ Widget _buildBottomNavItem(IconData icon, String label, {bool isActive = false})
                 ),
                 //layer kedua
                 Container(
-                  margin: const EdgeInsets.only(top: 120, left: 20, right: 20),
-                  padding: const EdgeInsets.all(20),
+                  margin: const EdgeInsets.only(top: 110, left: 20, right: 20),
+                 padding: const EdgeInsets.all(15),
                   decoration: BoxDecoration(
-                    color: Color(0xFF015A9E),
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(15),
-                      topRight: Radius.circular(15),
-                    ),
+                    color: Colors.white, // Alas utama sekarang PUTIH
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: [
+                      BoxShadow(color: Colors.grey.withOpacity(0.2), blurRadius: 10, offset: const Offset(0, 5)),
+                    ],
                   ),
+                  child: Column(
+                    
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                    color: const Color(0xFF015A9E),
+                    borderRadius: BorderRadius.circular(15),
+                      ), 
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -288,6 +298,7 @@ Widget _buildBottomNavItem(IconData icon, String label, {bool isActive = false})
                           fontSize: 24,
                           letterSpacing: 2,
                         ),
+                    
                       ),
                       const SizedBox(height: 10),
                       Row(
@@ -326,32 +337,34 @@ Widget _buildBottomNavItem(IconData icon, String label, {bool isActive = false})
                             style: TextStyle(color: Colors.white, fontSize: 14),
                           ),
                           Icon(
-                            Icons.arrow_forward,
+                            Icons.arrow_forward_ios,
                             color: Colors.white,
-                            size: 18,
+                            size: 18),
+                        ],
                           ),
                         ],
                       ),
-                      const SizedBox(height: 25),
+                  ),
+                     
                       //fast menu
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      Padding(padding: const EdgeInsets.only(top: 15),
+                      child : Row(
+                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          _buildFastMenu(Icons.swap_horiz, 'Transfer'),
-                          _buildFastMenu(Icons.receipt_long, 'BRIVA'),
-                          _buildFastMenu(
-                            Icons.account_balance_wallet_outlined,
-                            'E-Wallet',
-                          ),
-                          _buildFastMenu(Icons.phone_android, 'Pulsa/Data'),
+                          _buildFastMenu(Icons.wallet, Colors.blue, 'Transfer'),
+                          _buildFastMenu(Icons.receipt_long, Colors.teal, 'BRIVA'),
+                          _buildFastMenu(Icons.water_drop, Colors.cyan, 'PDAM'),
+                          _buildFastMenu(Icons.phone_android, Colors.green, 'Pulsa/Data'),
                         ],
+                      ),
                       ),
                     ],
                   ),
                 ),
               ],
             ),
+              
+            
             const SizedBox(height: 25),
             //kolom pencarian
             Container(
@@ -421,7 +434,9 @@ Widget _buildBottomNavItem(IconData icon, String label, {bool isActive = false})
             const SizedBox(height: 40),
           ],
         ),
+          
       ),
+      
 
       //tombol qris melayang
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
