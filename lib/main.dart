@@ -60,7 +60,8 @@ class HomePage extends StatelessWidget {
               width: 55,
               height: 55,
               decoration: BoxDecoration(
-                color: Colors.lightBlue.shade50,
+                // ignore: deprecated_member_use
+                color: iconColor.withOpacity(0.15),
                 borderRadius: BorderRadius.circular(15),
               ),
               child: Icon(icon, color: iconColor, size: 30),
@@ -86,7 +87,7 @@ class HomePage extends StatelessWidget {
         Text(
           title,
           textAlign: TextAlign.center,
-          style: const TextStyle(fontSize: 12, color: Colors.black87),
+          style: const TextStyle(fontSize: 11, color: Colors.black87),
         ),
       ],
     );
@@ -444,29 +445,28 @@ Container(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               children: [
                 _buildGridItem(
-                  Icons.account_balance,
+                  Icons.account_balance_wallet,
                   Colors.green,
                   'Top Up',
                   hasBadge: true,
                 ),
-                _buildGridItem(Icons.receipt, Colors.blue, 'Tagihan'),
-                _buildGridItem(Icons.atm, Colors.blue, 'Setor & Tarik\nTunai'),
+                _buildGridItem(Icons.credit_card, Colors.green, 'BRIZZI'),
+                _buildGridItem(Icons.receipt_long, Colors.blue, 'Tagihan', hasBadge: true),
+                _buildGridItem(
+                  Icons.swap_horiz,
+                  Colors.blue,
+                  'Transfer',
+                  hasBadge: true,
+                ),
                 _buildGridItem(
                   Icons.shopping_bag,
                   Colors.pink,
-                  'Lifestyle',
-                  hasBadge: true,
+                  'Lifestyle'
                 ),
                 _buildGridItem(
-                  Icons.qr_code_scanner,
+                  Icons.atm,
                   Colors.blue,
-                  'QRIS\nTransfer',
-                  hasBadge: true,
-                ),
-                _buildGridItem(
-                  Icons.credit_card,
-                  Colors.blue,
-                  'Debit\nVirtual',
+                  'Setor &\nTarik Tunai',
                 ),
                 _buildGridItem(
                   Icons.menu_book,
