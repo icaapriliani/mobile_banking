@@ -412,6 +412,18 @@ Widget _buildBottomNavItem(IconData icon, String label, {bool isActive = false})
           ],
         ),
       ),
+
+      //tombol qris melayang
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: Container(
+        height: 65, width: 65, margin: const EdgeInsets.only(top: 30), decoration: BoxDecoration(color: const Color(0xFF00529C), borderRadius: BorderRadius.circular(18), 
+        boxShadow: [
+          // ignore: deprecated_member_use
+          BoxShadow(color: Colors.grey.withOpacity(0.3), blurRadius: 10, offset:const Offset(0,5)),
+
+        ],
+        ),
+      ),
       //child 2 (scaffold) : bottomNavigationBar
       bottomNavigationBar: BottomAppBar(
         color: Colors.white,
