@@ -276,6 +276,7 @@ Widget _buildBottomNavItem(IconData icon, String label, {bool isActive = false})
                     color: Colors.white, // Alas utama sekarang PUTIH
                     borderRadius: BorderRadius.circular(20),
                     boxShadow: [
+                      // ignore: deprecated_member_use
                       BoxShadow(color: Colors.grey.withOpacity(0.2), blurRadius: 10, offset: const Offset(0, 5)),
                     ],
                   ),
@@ -364,7 +365,51 @@ Widget _buildBottomNavItem(IconData icon, String label, {bool isActive = false})
               ],
             ),
               
-            
+            //banner promo
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 20),
+             padding: const EdgeInsets.all(15),
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                  colors: [
+                    Color(0xFF00529C),
+                    Color(0xFF00A2E9),
+                  ],
+                ),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Expanded(child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Takut Inflasi? Emas Jadi Solusi',
+                          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13),
+                          ),
+                      SizedBox(height: 4),
+                      Text(
+                          'Yuk, buka tabungan emas sekarang!',
+                          style: TextStyle(color: Colors.white70, fontSize: 11),
+                        ),
+],
+),
+),
+
+//sisi kiri
+Container(
+  padding: const EdgeInsets.all(8),
+  decoration: BoxDecoration(
+    // ignore: deprecated_member_use
+    color: Colors.white.withOpacity(0.2), borderRadius: BorderRadius.circular(10),
+  ),
+  child:const Icon(Icons.monetization_on, color: Colors.amber, size: 30), // Ikon koin emas
+),
+                ],
+              ),
+            ),
             const SizedBox(height: 25),
             //kolom pencarian
             Container(
