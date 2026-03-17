@@ -270,7 +270,7 @@ Widget _buildBottomNavItem(IconData icon, String label, {bool isActive = false})
                 ),
                 //layer kedua
                 Container(
-                  margin: const EdgeInsets.only(top: 110, left: 20, right: 20),
+                  margin: const EdgeInsets.only(top: 140, left: 20, right: 20),
                  padding: const EdgeInsets.all(15),
                   decoration: BoxDecoration(
                     color: Colors.white, // Alas utama sekarang PUTIH
