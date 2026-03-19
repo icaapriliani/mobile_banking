@@ -99,7 +99,9 @@ class HomePage extends StatelessWidget {
   // fungsi banner promo
   Widget _buildpromoCard(String title, String subtitle, Color bgColor){
     return Container(
-      width: 260, margin: const EdgeInsets.only(right: 15), padding:  const EdgeInsets.all(20), decoration: BoxDecoration(color: bgColor, borderRadius: BorderRadius.circular(15),),
+      width: 260,
+      height: 140,
+       margin: const EdgeInsets.only(right: 15), padding:  const EdgeInsets.all(20), decoration: BoxDecoration(color: bgColor, borderRadius: BorderRadius.circular(15),),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.center, children: [Text(title, style: const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),),
       const SizedBox(height: 8), 
       Text(subtitle, style: const TextStyle(color:Colors.white, fontSize: 12 ),),
@@ -557,9 +559,40 @@ class HomePage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 30),
-          ],
-        ),
-      ),
+
+            //banner 
+            Padding(padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text('Spesial Untukmo', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black87),
+                ),
+                const SizedBox(height: 4),
+                Text('Cobain beragam cara baru untuk memaksimalkan aktivitas perbankan kamu', style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
+                ),
+              ],
+            ),
+            ),
+            const SizedBox(height: 15),
+
+            //scrol samping untuk promoo
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Row(children: [
+                _buildpromoCard('KPR BRI','wujudkan rumah impian\nBunga muali 4.5%', Colors.teal),
+                _buildpromoCard('Promo Ramadhan', 'Cashback s/d 50%nBelanja Kebutuhan Harian', Colors.orange),
+                _buildpromoCard('Investasi Emas', 'Nabung Emas murah\nMulai Rp 10.000 saja', const Color(0xFF00529C)),
+              ],
+              ),
+            ),
+            const SizedBox(height: 30)
+
+              ],
+            ),
+            ),
+          
+
 
       //tombol qris melayang
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
