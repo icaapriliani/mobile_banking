@@ -476,7 +476,16 @@ Container(
                 _buildGridItem(Icons.eco, Colors.orange, 'Investasi'),
               ],
             ),
-            const SizedBox(height: 40),
+            const SizedBox(height: 15),
+
+            //tombol lainnya
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text('Lainnya', style: TextStyle(color: Color(0xFF00529C), fontSize: 13, fontWeight: FontWeight.w600,),),
+                const SizedBox(width: 4), const Icon(Icons.keyboard_arrow_down, color: Color(0xFF00529C), size: 18,),
+              ],
+            ),
           ],
         ),
           
