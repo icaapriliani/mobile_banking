@@ -8,13 +8,13 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context)  {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Replika BRImo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF00529C)),
-        useMaterial3: true,
+        useMaterial3: true, 
       ),
       //web mobile view
       home: Center(
@@ -53,6 +53,45 @@ class HomePage extends StatelessWidget {
     );
   }
 
+  //fungsi banner promo atas
+  Widget _buildPromoBannerCard(String title, String subtitle, IconData iconData){
+  return Container(
+    width: 320, margin: const EdgeInsets.only(right: 15),
+    padding: const EdgeInsets.all(15),
+
+    decoration: BoxDecoration(gradient: const LinearGradient(colors:[Color(0xFF00529C), Color(0xFF00A2E9)],begin: Alignment.centerLeft,
+          end: Alignment.centerRight, ),
+          borderRadius: BorderRadius.circular(15),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(title, style: const TextStyle(
+                    color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13,
+                  ),),
+                  const SizedBox(height: 4),
+                  Text(subtitle, style: const TextStyle(color: Colors.white70, fontSize: 11),
+                  ),
+                ],
+              ),
+              ),
+              Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.2),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Icon(iconData, color: Colors.amber, size: 30,),
+              ),
+            ],
+          ),
+  
+  );
+}
   //fungsi untuk menu kotak
   Widget _buildGridItem(
     IconData icon,
@@ -452,61 +491,34 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
+            const SizedBox(height:20),
 
-            //banner promo
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 20),
-              padding: const EdgeInsets.all(15),
-              decoration: BoxDecoration(
-                gradient: const LinearGradient(
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
-                  colors: [Color(0xFF00529C), Color(0xFF00A2E9)],
+            //banner promo atas
+           SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Row(
+              children: [ 
+                _buildPromoBannerCard(
+                  'Takut Inflasi? Emas Jadi Solusi',
+                    'Yuk, buka tabungan emas sekarang!',
+                    Icons.monetization_on,
                 ),
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Takut Inflasi? Emas Jadi Solusi',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 13,
-                          ),
-                        ),
-                        SizedBox(height: 4),
-                        Text(
-                          'Yuk, buka tabungan emas sekarang!',
-                          style: TextStyle(color: Colors.white70, fontSize: 11),
-                        ),
-                      ],
+                    _buildPromoBannerCard(
+                    'KPR BRI Bunga Spesial',
+                    'Wujudkan rumah impianmu tahun ini.',
+                    Icons.home_work,
                     ),
-                  ),
-
-                  //sisi kiri
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      // ignore: deprecated_member_use
-                      color: Colors.white.withOpacity(0.2),
-                      borderRadius: BorderRadius.circular(10),
+                    _buildPromoBannerCard(
+                    'Promo Belanja Bulanan',
+                    'Cashback hingga 50% di merchant pilihan.',
+                    Icons.shopping_cart,
+                    
                     ),
-                    child: const Icon(
-                      Icons.monetization_on,
-                      color: Colors.amber,
-                      size: 30,
-                    ), // Ikon koin emas
-                  ),
-                ],
-              ),
+              ],
             ),
-            const SizedBox(height: 25),
+           ),
+           const SizedBox(height:20),
             //kolom pencarian
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 20),
