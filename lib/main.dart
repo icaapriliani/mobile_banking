@@ -231,15 +231,16 @@ class HomePage extends StatelessWidget {
               children: [
                 //layer pertama
                 Container(
-                  height: 240,
+                  height: 340,
                   width: double.infinity,
                   padding: const EdgeInsets.only(top: 60, left: 20, right: 20),
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [Color(0xFF002244), Color(0xFF00529C)],
-                    ),
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: const NetworkImage('https://www.shutterstock.com/shutterstock/videos/3496205005/thumb/7.jpg?ip=x480'),
+                       fit: BoxFit.cover,
+                       colorFilter: ColorFilter.mode( Colors.black.withOpacity(0.5),
+                        BlendMode.darken),
+                         ),
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(30),
                       bottomRight: Radius.circular(30),
@@ -407,7 +408,7 @@ class HomePage extends StatelessWidget {
                                 letterSpacing: 2,
                               ),
                             ),
-                            const SizedBox(height: 10),
+                            const SizedBox(height: 5),
                             Row(
                               children: [
                                 const Text(
@@ -433,7 +434,7 @@ class HomePage extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            const SizedBox(height: 15),
+                            const SizedBox(height: 10),
                             const Divider(color: Colors.white30, thickness: 1),
                             const SizedBox(height: 10),
                             const Row(
@@ -459,7 +460,7 @@ class HomePage extends StatelessWidget {
 
                       //fast menu
                       Padding(
-                        padding: const EdgeInsets.only(top: 15),
+                        padding: const EdgeInsets.only(top: 10),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
